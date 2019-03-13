@@ -1,21 +1,134 @@
-# Lumen PHP Framework
+# Bootstrap Microservice
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+### Install
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+```shell
+git clone git@bitbucket.org:comunica_web/microservice.git shipping
+cp .env.exemple .env
+```
 
-## Official Documentation
+Configurar .env com o seu banco de dados
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Configurar .env com os dados da API
 
-## Security Vulnerabilities
+Change namespace in routes/api.php
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Base uri 
+```
+http://microservice.test/api
+```
 
-## License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Headers
+```
+Accept: application/prs.microservice.v1+json
+Content-Type: application/json
+```
+
+### Endpoints
+
+#### Users
+
+Get All users:
+```
+/user
+```
+
+Exemple response:
+```json
+{
+    "data": [
+        {
+            "type": "users",
+            "id": "1",
+            "attributes": {
+                "name": "Dr. Lexus Farrell III",
+                "email": "clyde.wilkinson@example.org",
+                "created_at": "2018-01-13T20:17:35+00:00"
+            }
+        },
+        {
+            "type": "users",
+            "id": "2",
+            "attributes": {
+                "name": "Leilani Waters",
+                "email": "kemmer.danielle@example.net",
+                "created_at": "2018-01-13T20:17:35+00:00"
+            }
+        }
+    ]
+}
+```
+
+Get a users:
+```
+/user/10
+```
+
+Exemple response:
+```json
+{
+    "data": {
+        "type": "users",
+        "id": "10",
+        "attributes": {
+            "name": "Clara Schamberger DVM",
+            "email": "camilla.sauer@example.net",
+            "created_at": "2018-01-13T20:17:35+00:00"
+        }
+    }
+}
+```
+
+Delete a users:
+```
+/user/10
+```
+
+### HTTTP Status
+
+#### Success
+
+**200** - OK
+
+**201** - Created
+
+**202** - Accepted
+
+**204** - No Content
+
+#### Errors
+
+##### 422 Unprocessable Entity
+ 
+**422.001** - No query results for endpoint. | User id not found
+
+**422.002** - Could not delete user. | User id not found
+
+
+| Exception                                                 | Status Code   |
+| ----------------------------------------------------------|:--------------|
+| \App\Exceptions\Http\AccessDeniedBaseHttpException        | 403           |
+| \App\Exceptions\Http\BadRequestHttpException              | 400           |
+| \App\Exceptions\Http\ConflictHttpException                | 409           |
+| \App\Exceptions\Http\GoneBaseHttpException                | 410           |
+| \App\Exceptions\Http\HttpException                        | 500           |
+| \App\Exceptions\Http\LengthRequiredBaseHttpException      | 411           |
+| \App\Exceptions\Http\MethodNotAllowedHttpException        | 405           |
+| \App\Exceptions\Http\NotAcceptableHttpException           | 403           |
+| \App\Exceptions\Http\NotFoundHttpException                | 404           |
+| \App\Exceptions\Http\PreconditionFailedBaseHttpException  | 412           |
+| \App\Exceptions\Http\PreconditionRequiredBaseHttpException| 428           |
+| \App\Exceptions\Http\ServiceUnavailableHttpException      | 503           |
+| \App\Exceptions\Http\TooManyRequestsHttpException         | 429           |
+| \App\Exceptions\Http\UnauthorizedHttpException            | 401           |
+| \App\Exceptions\Http\UnprocessableEntityHttpException     | 422           |
+| \App\Exceptions\Http\UnsupportedMediaTypeHttpException    | 415           |
+
+
+| ResourceException                                         | Status Code   |
+| ----------------------------------------------------------|:--------------|
+| \App\Exceptions\Resources\ResourceException               | 422           |
+| \App\Exceptions\Resources\StoreResourceFailedException    | 422           |
+| \App\Exceptions\Resources\DeleteResourceFailedException   | 422           |
+| \App\Exceptions\Resources\UpdateResourceFailedException   | 422           |
