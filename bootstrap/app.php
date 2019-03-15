@@ -112,9 +112,19 @@ $app->configure('repository');
 */
 
 $app->router->group([
-    'namespace' => 'App\Http\Controllers',
+    'namespace' => 'App\Http\Controllers\Web',
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
+});
+
+$app->router->group([
+    'namespace' => 'App\Http\Controllers\Api',
+], function ($router) use ($app) {
+    $api = $app->make(Dingo\Api\Routing\Router::class);
+
+    $api->version('v1', function (\Dingo\Api\Routing\Router $api) {
+        require __DIR__.'/../routes/api/v1.php';
+    });
 });
 
 $app->router->group(['namespace' => '\Rap2hpoutre\LaravelLogViewer'
