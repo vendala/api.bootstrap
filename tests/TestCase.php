@@ -1,6 +1,12 @@
 <?php
 
-abstract class TestCase extends Laravel\Lumen\Testing\TestCase
+namespace Tests;
+
+use ReflectionClass;
+use ReflectionProperty;
+use Laravel\Lumen\Testing\TestCase as BaseTestCase;
+
+abstract class TestCase extends BaseTestCase
 {
     /**
      * Creates the application.
@@ -10,5 +16,21 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     public function createApplication()
     {
         return require __DIR__.'/../bootstrap/app.php';
+    }
+
+    /**
+     * @param \ReflectionClass $reflector
+     * @param string
+     *
+     * @return \ReflectionProperty
+     *
+     * @throws \ReflectionException
+     */
+    public function getProperty(ReflectionClass $reflector, string $property_name): ReflectionProperty
+    {
+        $property = $reflector->getProperty($property_name);
+        $property->setAccessible(true);
+
+        return $property;
     }
 }

@@ -6,6 +6,4 @@ $router;
 /** @var Dingo\Api\Routing\Router $api */
 $api;
 
-$api->get('/ping-pong', function () {
-    return 'oi';
-});
+$api->get('/ping-pong', ['as' => 'ping-pong', 'uses' => 'PingPongController@__invoke']);

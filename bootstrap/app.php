@@ -122,10 +122,14 @@ $app->router->group([
 ], function ($router) use ($app) {
     $api = $app->make(Dingo\Api\Routing\Router::class);
 
-    $api->version('v1', function (\Dingo\Api\Routing\Router $api) {
-        require __DIR__.'/../routes/api/v1.php';
+    $api->version('v1', function ($api) {
+        $api->group(['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
+            require __DIR__.'/../routes/api/v1.php';
+        });
     });
 });
+
+
 
 $app->router->group(['namespace' => '\Rap2hpoutre\LaravelLogViewer'
 ], function($router) {
