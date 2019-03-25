@@ -35,6 +35,7 @@ abstract class FeatureTestCase extends TestCase
             'CONTENT_TYPE' => 'application/json',
             'ACCEPT' => $accept,
         ], $headers);
+
         return $this->call(
             $method, $uri, [], [], [], $this->transformHeadersToServerVars($headers), $content
         );
