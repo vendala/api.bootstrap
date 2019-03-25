@@ -9,9 +9,12 @@ use App\Http\Requests\User\StorageRequest;
  *
  * @package App\Http\Controllers\Api\V1\User
  */
-class StorageController extends UserController
+final class StorageController extends UserController
 {
-    public function __invoke(StorageRequest $request)
+    /**
+     * @param \App\Http\Requests\User\StorageRequest $request
+     */
+    final public function __invoke(StorageRequest $request)
     {
         $this->user->create($request->all());
     }
