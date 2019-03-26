@@ -9,7 +9,7 @@ use Dingo\Api\Routing\Helpers;
  *
  * @package App\Http\Controllers
  */
-class ApiController extends Controller
+abstract class ApiController extends Controller
 {
     use Helpers;
 }
