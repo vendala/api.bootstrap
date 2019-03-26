@@ -12,4 +12,9 @@ use Dingo\Api\Routing\Helpers;
 abstract class ApiController extends Controller
 {
     use Helpers;
+
+    public function __construct()
+    {
+        //
+    }
 }

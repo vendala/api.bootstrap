@@ -16,6 +16,6 @@ final class StorageController extends UserController
      */
     final public function __invoke(StorageRequest $request)
     {
-        $this->user->create($request->all());
+        $this->user_repository->create($request->all());
     }
 }

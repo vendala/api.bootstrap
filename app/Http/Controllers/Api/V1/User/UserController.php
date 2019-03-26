@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V1\User;
 use App\Http\Controllers\V1Controller;
 use App\Repositories\Contracts\UserRepository;
 
+use function app;
+
 /**
  * Class UserController.
  *
@@ -12,6 +14,16 @@ use App\Repositories\Contracts\UserRepository;
  */
 abstract class UserController extends V1Controller
 {
+    /**
+     * User Repository.
+     *
+     * @var \App\Repositories\Contracts\UserRepository
+     */
+    protected $user_repository;
+
+    /**
+     * UserController constructor.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -19,8 +31,11 @@ abstract class UserController extends V1Controller
         $this->initialize();
     }
 
-    private function initialize()
+    /**
+     * Initialize for construct.
+     */
+    private function initialize(): void
     {
-        $this->user = app(UserRepository::class);
+        $this->user_repository = app(UserRepository::class);
     }
 }
