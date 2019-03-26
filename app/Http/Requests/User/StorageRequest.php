@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use Dingo\Api\Http\FormRequest;
 
+
 /**
  * Class StorageRequest.
  *
@@ -11,6 +12,15 @@ use Dingo\Api\Http\FormRequest;
  */
 class StorageRequest extends FormRequest
 {
+    /**
+     * @return mixed
+     */
+    public function authorize()
+    {
+        return app('auth')->guest();
+
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

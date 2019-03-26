@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
 
 // $app->withFacades();
 
-// $app->withEloquent();
+ $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +88,7 @@ $app->register(Prettus\Repository\Providers\LumenRepositoryServiceProvider::clas
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(App\Providers\IdeHelperServiceProvider::class);
 $app->register(Barryvdh\Cors\ServiceProvider::class);
+$app->register(App\Providers\RepositoryServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,7 @@ $app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->configure('api');
 $app->configure('auth');
 $app->configure('repository');
+$app->configure('filesystems');
 
 /*
 |--------------------------------------------------------------------------
