@@ -11,7 +11,6 @@ use Tests\Unit\UnitTestCase;
  */
 class UserControllerTest extends UnitTestCase
 {
-
     /**
      * @test
      *

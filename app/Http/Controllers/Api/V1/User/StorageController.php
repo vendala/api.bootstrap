@@ -9,13 +9,18 @@ use App\Http\Requests\User\StorageRequest;
  *
  * @package App\Http\Controllers\Api\V1\User
  */
-final class StorageController extends UserController
+class StorageController extends UserController
 {
     /**
      * @param \App\Http\Requests\User\StorageRequest $request
      */
-    final public function __invoke(StorageRequest $request)
+    public function __invoke(StorageRequest $request)
     {
+        // Criar usuário
+        // Criar perfil do usuário
+        // get and save gravatar
+        // Enviar email para continuar cadastro
+
         $this->user_repository->create($request->all());
     }
 }
