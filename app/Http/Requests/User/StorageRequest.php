@@ -8,6 +8,10 @@ use Dingo\Api\Http\FormRequest;
 /**
  * Class StorageRequest.
  *
+ * @property string name
+ * @property string email
+ * @property mixed password
+ *
  * @package App\Http\Requests\User
  */
 class StorageRequest extends FormRequest
