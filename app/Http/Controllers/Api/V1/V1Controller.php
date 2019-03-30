@@ -7,17 +7,13 @@ namespace App\Http\Controllers;
  *
  * @package App\Http\Controllers
  */
-class V1Controller extends ApiController
+abstract class V1Controller extends ApiController
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * V1Controller constructor.
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
-
-    //
 }

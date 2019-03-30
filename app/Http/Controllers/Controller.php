@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 
-class Controller extends BaseController
+/**
+ * Class Controller
+ *
+ * @package App\Http\Controllers
+ */
+abstract class Controller extends BaseController
 {
     //
 }
