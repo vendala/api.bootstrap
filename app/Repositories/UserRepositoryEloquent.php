@@ -16,6 +16,11 @@ use Prettus\Repository\Criteria\RequestCriteria;
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
     /**
+     * @var bool
+     */
+    protected $skipPresenter = true;
+
+    /**
      * Specify Model class name
      *
      * @return string
