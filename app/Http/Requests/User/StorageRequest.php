@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use Dingo\Api\Http\FormRequest;
 
+use function app;
 
 /**
  * Class StorageRequest.
@@ -22,7 +23,6 @@ class StorageRequest extends FormRequest
     public function authorize()
     {
         return app('auth')->guest();
-
     }
 
     /**

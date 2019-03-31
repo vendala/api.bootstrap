@@ -2,9 +2,8 @@
 
 namespace App\Listeners\Api\V1\User;
 
+use App\Entities\User;
 use App\Events\Api\V1\User\StorageEvent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Repositories\Contracts\UserRepository;
 use Illuminate\Contracts\Hashing\Hasher as Hash;
 
@@ -13,10 +12,8 @@ use Illuminate\Contracts\Hashing\Hasher as Hash;
  *
  * @package App\Listeners\Api\V1\User
  */
-class StorageUserListener implements ShouldQueue
+class StorageUserListener
 {
-    use InteractsWithQueue;
-
     /**
      * @var \App\Repositories\Contracts\UserRepository
      */
@@ -44,30 +41,18 @@ class StorageUserListener implements ShouldQueue
      *
      * @param \App\Events\Api\V1\User\StorageEvent $event
      *
-     * @return void
+     * @return \App\Entities\User
      */
-    public function handle(StorageEvent $event): void
+    public function handle(StorageEvent $event): User
     {
-        $userData = $this->structureUser($event);
-
-        $user = $this->user_repository->create($userData);
-
-        dd($user);
+        return $this->user_repository->create($this->structureUser($event));
     }
 
     /**
-     * Handle a job failure.
+     * @param \App\Events\Api\V1\User\StorageEvent $event.
      *
-     * @param \App\Events\Api\V1\User\StorageEvent $event
-     * @param \Exception  $exception
-     *
-     * @return void
+     * @return array
      */
-    public function failed(StorageEvent $event, $exception): void
-    {
-        //
-    }
-
     private function structureUser(StorageEvent $event): array
     {
         return [

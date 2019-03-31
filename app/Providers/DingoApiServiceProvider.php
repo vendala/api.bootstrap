@@ -20,7 +20,7 @@ class DingoApiServiceProvider extends ServiceProvider
     {
 //        $this->authentications();
         $this->rateLimit();
-        $this->responseTransformer();
+//        $this->responseTransformer();
         $this->responseFormat();
         $this->errorFormat();
     }

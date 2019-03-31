@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\User;
+use App\Presenters\Api\V1\UserPresenter;
 use App\Validators\UserValidator;
 use App\Repositories\Contracts\UserRepository;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -48,5 +49,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function validator(): string
     {
         return UserValidator::class;
+    }
+
+    /**
+     * Specify Presenter class name
+     *
+     * @return string
+     */
+    public function presenter(): string
+    {
+        return UserPresenter::class;
     }
 }

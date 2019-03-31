@@ -2,11 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Http\BadRequestHttpException;
 use Exception;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Prettus\Validator\Exceptions\ValidatorException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
@@ -28,11 +30,18 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
+     *
      * @return void
+     *
+     * @throws \Exception
      */
     public function report(Exception $exception)
     {
+        if ($exception instanceof ValidatorException) {
+            throw new BadRequestHttpException($exception->getMessage(), $exception->getMessageBag()->toArray());
+        }
+
         parent::report($exception);
     }
 

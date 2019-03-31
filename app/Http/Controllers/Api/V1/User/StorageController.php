@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\User;
 
 use App\Events\Api\V1\User\StorageEvent;
 use App\Http\Requests\User\StorageRequest;
+use App\Transformers\Api\V1\UserTransformer;
 use Illuminate\Contracts\Events\Dispatcher as Event;
 
 /**
@@ -32,9 +33,15 @@ class StorageController extends UserController
 
     /**
      * @param \App\Http\Requests\User\StorageRequest $request
+     *
+     * @return \Dingo\Api\Http\Response
      */
     public function __invoke(StorageRequest $request)
     {
-        $this->event->dispatch(new StorageEvent($request->name, $request->email, $request->password));
+        $event =  $this->event->dispatch(new StorageEvent($request->name, $request->email, $request->password));4
+
+        $user = $event[0];
+
+        return $this->response->item($user, new UserTransformer());
     }
 }

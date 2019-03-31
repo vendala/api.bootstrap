@@ -77,7 +77,7 @@ $app->routeMiddleware([
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+ $app->register(App\Providers\EventServiceProvider::class);
 
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
@@ -89,6 +89,9 @@ $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::cla
 $app->register(App\Providers\IdeHelperServiceProvider::class);
 $app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(Illuminate\Notifications\NotificationServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -99,8 +102,20 @@ $app->register(App\Providers\RepositoryServiceProvider::class);
 
 $app->configure('api');
 $app->configure('auth');
+$app->configure('mail');
 $app->configure('repository');
 $app->configure('filesystems');
+
+/*
+|--------------------------------------------------------------------------
+| Register Alias
+|--------------------------------------------------------------------------
+|
+*/
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -130,8 +145,6 @@ $app->router->group([
         });
     });
 });
-
-
 
 $app->router->group(['namespace' => '\Rap2hpoutre\LaravelLogViewer'
 ], function($router) {
