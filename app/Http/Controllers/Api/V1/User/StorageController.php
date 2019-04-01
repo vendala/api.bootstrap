@@ -7,6 +7,9 @@ use App\Http\Requests\User\StorageRequest;
 use App\Transformers\Api\V1\UserTransformer;
 use Illuminate\Contracts\Events\Dispatcher as Event;
 
+use Dingo\Api\Transformer\Factory as TransformerFactory;
+
+
 /**
  * Class StorageController.
  *
@@ -18,17 +21,23 @@ class StorageController extends UserController
      * @var \Illuminate\Contracts\Events\Dispatcher
      */
     private $event;
+    /**
+     * @var TransformerFactory
+     */
+    private $transformer;
 
     /**
      * StorageController constructor.
      *
      * @param \Illuminate\Contracts\Events\Dispatcher $event
+     * @param TransformerFactory $transformer
      */
-    public function __construct(Event $event)
+    public function __construct(Event $event, TransformerFactory $transformer)
     {
         parent::__construct();
 
         $this->event = $event;
+        $this->transformer = $transformer;
     }
 
     /**
@@ -38,10 +47,10 @@ class StorageController extends UserController
      */
     public function __invoke(StorageRequest $request)
     {
-        $event =  $this->event->dispatch(new StorageEvent($request->name, $request->email, $request->password));4
+        $event =  $this->event->dispatch(new StorageEvent($request->name, $request->email, $request->password));
 
         $user = $event[0];
 
-        return $this->response->item($user, new UserTransformer());
+        return $this->response->item($user, new UserTransformer())->setStatusCode(201);
     }
 }
