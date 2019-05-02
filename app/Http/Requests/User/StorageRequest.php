@@ -20,7 +20,7 @@ class StorageRequest extends FormRequest
     /**
      * @return mixed
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return app('auth')->guest();
     }
