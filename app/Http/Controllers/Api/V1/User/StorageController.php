@@ -32,12 +32,11 @@ class StorageController extends UserController
      * @param \Illuminate\Contracts\Events\Dispatcher $event
      * @param TransformerFactory $transformer
      */
-    public function __construct(Event $event, TransformerFactory $transformer)
+    public function __construct(Event $event )
     {
         parent::__construct();
 
         $this->event = $event;
-        $this->transformer = $transformer;
     }
 
     /**
