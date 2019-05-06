@@ -24,6 +24,8 @@ class StorageController extends UserController
 
         $user = $this->userRepository->createOrFail($attributes);
 
+        $user->profile()->create();
+
         return $this->response->item($user, new UserTransformer())->setStatusCode(201);
     }
 
