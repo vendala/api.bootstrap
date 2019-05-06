@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\User;
 
+use Dingo\Api\Http\Response;
 use App\Http\Requests\User\StorageRequest;
 use App\Transformers\Api\V1\UserTransformer;
 
@@ -17,7 +18,7 @@ class StorageController extends UserController
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function __invoke(StorageRequest $request): \Dingo\Api\Http\Response
+    public function __invoke(StorageRequest $request): Response
     {
         $attributes = $this->getAttributes($request);
 

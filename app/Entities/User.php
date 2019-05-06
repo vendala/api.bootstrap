@@ -7,6 +7,8 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use App\Events\Api\V1\User\UserSavedEvent;
+
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
@@ -57,7 +59,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     protected $dispatchesEvents = [
-        \App\Events\Api\V1\User\StorageEvent::class
+        'saved' => UserSavedEvent::class,
     ];
 
     /**
@@ -65,7 +67,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return null|string
      */
-    public function getJWTIdentifier()
+    public function getJWTIdentifier(): ?string
     {
         return $this->getKey();
     }
@@ -75,7 +77,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @return array
      */
-    public function getJWTCustomClaims()
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

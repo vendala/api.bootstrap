@@ -3,7 +3,7 @@
 namespace App\Listeners\Api\V1\User;
 
 use App\Entities\User;
-use App\Events\Api\V1\User\StorageEvent;
+use App\Events\Api\V1\User\UserSavedEvent;
 use App\Repositories\Contracts\UserRepository;
 use Illuminate\Contracts\Hashing\Hasher as Hash;
 
@@ -39,21 +39,21 @@ class StorageUserListener
     /**
      * Handle the event.
      *
-     * @param \App\Events\Api\V1\User\StorageEvent $event
+     * @param \App\Events\Api\V1\User\UserSavedEvent $event
      *
      * @return \App\Entities\User
      */
-    public function handle(StorageEvent $event): User
+    public function handle(UserSavedEvent $event): User
     {
         return $this->user_repository->create($this->structureUser($event));
     }
 
     /**
-     * @param \App\Events\Api\V1\User\StorageEvent $event.
+     * @param \App\Events\Api\V1\User\UserSavedEvent $event .
      *
      * @return array
      */
-    private function structureUser(StorageEvent $event): array
+    private function structureUser(UserSavedEvent $event): array
     {
         return [
             'name' => $event->getName(),

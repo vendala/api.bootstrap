@@ -1,15 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: macmini03
- * Date: 2019-03-28
- * Time: 13:25
- */
 
 namespace App\Listeners\Api\V1\User;
 
+use App\Events\Api\V1\User\UserSavedEvent;
+use App\Listeners\Api\V1\User\Contracts\UserListener;
 
-class StorageProfileListener
+/**
+ * Class StorageProfileListener
+ *
+ * @package App\Listeners\Api\V1\User
+ */
+class StorageProfileListener implements UserListener
 {
+    /**
+     * @param \App\Events\Api\V1\User\UserSavedEvent $user
+     *
+     * @return mixed
+     */
+    public function handle(UserSavedEvent $user)
+    {
 
+    }
 }
