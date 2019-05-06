@@ -18,7 +18,7 @@ use function app;
 class StorageRequest extends FormRequest
 {
     /**
-     * @return mixed
+     * @return bool
      */
     public function authorize(): bool
     {

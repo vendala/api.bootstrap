@@ -56,6 +56,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password',
     ];
 
+    protected $dispatchesEvents = [
+        \App\Events\Api\V1\User\StorageEvent::class
+    ];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

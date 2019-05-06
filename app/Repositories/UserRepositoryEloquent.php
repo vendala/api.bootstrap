@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use App\Entities\User;
-use App\Presenters\Api\V1\UserPresenter;
 use App\Validators\UserValidator;
+use App\Presenters\Api\V1\UserPresenter;
+use App\Supports\Repositories\BaseRepository;
 use App\Repositories\Contracts\UserRepository;
-use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -59,5 +59,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function presenter(): string
     {
         return UserPresenter::class;
+    }
+
+    /**
+     * Get the fillable attributes for the model.
+     *
+     * @return array
+     */
+    public function getFillable(): array
+    {
+        return $this->model->getFillable();
     }
 }

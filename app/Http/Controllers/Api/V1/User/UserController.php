@@ -19,7 +19,7 @@ abstract class UserController extends V1Controller
      *
      * @var \App\Repositories\Contracts\UserRepository
      */
-    protected $user_repository;
+    protected $userRepository;
 
     /**
      * UserController constructor.
@@ -36,6 +36,6 @@ abstract class UserController extends V1Controller
      */
     private function initialize(): void
     {
-        $this->user_repository = app(UserRepository::class);
+        $this->userRepository = app(UserRepository::class);
     }
 }

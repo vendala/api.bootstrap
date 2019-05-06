@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1\User;
 
-use App\Events\Api\V1\User\StorageEvent;
 use App\Http\Requests\User\StorageRequest;
 use App\Transformers\Api\V1\UserTransformer;
-use Illuminate\Contracts\Events\Dispatcher as Event;
-
-use Dingo\Api\Transformer\Factory as TransformerFactory;
-
 
 /**
  * Class StorageController.
@@ -18,38 +13,36 @@ use Dingo\Api\Transformer\Factory as TransformerFactory;
 class StorageController extends UserController
 {
     /**
-     * @var \Illuminate\Contracts\Events\Dispatcher
-     */
-    private $event;
-    /**
-     * @var TransformerFactory
-     */
-    private $transformer;
-
-    /**
-     * StorageController constructor.
+     * @param \App\Http\Requests\User\StorageRequest $request
      *
-     * @param \Illuminate\Contracts\Events\Dispatcher $event
-     * @param TransformerFactory $transformer
+     * @return \Dingo\Api\Http\Response
      */
-    public function __construct(Event $event )
+    public function __invoke(StorageRequest $request): \Dingo\Api\Http\Response
     {
-        parent::__construct();
+        $attributes = $this->getAttributes($request);
 
-        $this->event = $event;
+        $user = $this->userRepository->createOrFail($attributes);
+
+        return $this->response->item($user, new UserTransformer())->setStatusCode(201);
     }
 
     /**
      * @param \App\Http\Requests\User\StorageRequest $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return array
      */
-    public function __invoke(StorageRequest $request)
+    private function getAttributes(StorageRequest $request): array
     {
-        $event =  $this->event->dispatch(new StorageEvent($request->name, $request->email, $request->password));
+        return $request->only($this->listColumnsToCreate());
+    }
 
-        $user = $event[0];
-
-        return $this->response->item($user, new UserTransformer())->setStatusCode(201);
+    /**
+     * Get the fillable attributes for the model.
+     *
+     * @return array
+     */
+    private function listColumnsToCreate(): array
+    {
+        return $this->userRepository->getFillable();
     }
 }
