@@ -17,8 +17,10 @@ class StorageProfileListener implements UserListener
      *
      * @return mixed
      */
-    public function handle(UserSavedEvent $user)
+    public function handle(UserSavedEvent $event)
     {
+        $user = $event->getUser();
 
+        $user->profile()->create();
     }
 }
