@@ -20,32 +20,12 @@ class StorageController extends UserController
      */
     public function __invoke(StorageRequest $request): Response
     {
-        $attributes = $this->getAttributes($request);
+        $attributes = $request->only($this->userRepository->getFillable());
 
         $user = $this->userRepository->createOrFail($attributes);
 
         $user->profile()->create();
 
         return $this->response->item($user, new UserTransformer())->setStatusCode(201);
-    }
-
-    /**
-     * @param \App\Http\Requests\User\StorageRequest $request
-     *
-     * @return array
-     */
-    private function getAttributes(StorageRequest $request): array
-    {
-        return $request->only($this->listColumnsToCreate());
-    }
-
-    /**
-     * Get the fillable attributes for the model.
-     *
-     * @return array
-     */
-    private function listColumnsToCreate(): array
-    {
-        return $this->userRepository->getFillable();
     }
 }
