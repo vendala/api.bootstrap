@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Presenters\Api\V1;
+namespace App\Presenters;
 
-use App\Transformers\Api\V1\UserTransformer;
+use App\Transformers\UserTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
  * Class UserPresenter.
  *
- * @package App\Presenters\Api\V1
+ * @package App\Presenters
  */
 class UserPresenter extends FractalPresenter
 {
-
     /**
      * Transformer
      *
-     * @return \App\Transformers\Api\V1\UserTransformer
+     * @return \App\Transformers\UserTransformer
      *
      */
     public function getTransformer()

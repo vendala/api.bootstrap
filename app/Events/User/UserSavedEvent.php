@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Events\Api\V1\User;
+namespace App\Events\User;
 
-use App\Entities\User;
 use App\Events\Event;
+use App\Entities\User;
 
 /**
  * Class StorageEvent.
  *
- * @package App\Events\Api\V1\User
+ * @package App\Events\User
  */
 class UserSavedEvent extends Event
 {

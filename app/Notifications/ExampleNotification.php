@@ -2,13 +2,13 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
 /**
  * Class ErrorPersistsUser.
  *
- * @package App\Notifications\Api\V1\User\Storage
+ * @package App\Notifications\User\Storage
  */
 class ExampleNotification extends Notification
 {

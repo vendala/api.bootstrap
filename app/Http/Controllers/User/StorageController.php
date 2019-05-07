@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\User;
+namespace App\Http\Controllers\User;
 
 use Dingo\Api\Http\Response;
+use App\Transformers\UserTransformer;
 use App\Http\Requests\User\StorageRequest;
-use App\Transformers\Api\V1\UserTransformer;
 
 /**
  * Class StorageController.
  *
- * @package App\Http\Controllers\Api\V1\User
+ * @package App\Http\Controllers\User
  */
 class StorageController extends UserController
 {

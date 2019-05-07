@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Dingo\Api\Routing\Helpers;
+use Laravel\Lumen\Routing\Controller;
 
 /**
- * Class ExampleController.
+ * Class Controller
  *
  * @package App\Http\Controllers
  */
-abstract class ApiController extends Controller
+abstract class BaseController extends Controller
 {
     use Helpers;
-
-    public function __construct()
-    {
-        //
-    }
 }

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Entities\User;
 use App\Validators\UserValidator;
-use App\Presenters\Api\V1\UserPresenter;
+use App\Presenters\UserPresenter;
 use App\Supports\Repositories\BaseRepository;
 use App\Repositories\Contracts\UserRepository;
 use Prettus\Repository\Criteria\RequestCriteria;

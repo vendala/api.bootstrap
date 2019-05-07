@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\User;
+namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\V1Controller;
+use App\Http\Controllers\BaseController;
 use App\Repositories\Contracts\UserRepository;
 
 use function app;
@@ -10,9 +10,9 @@ use function app;
 /**
  * Class UserController.
  *
- * @package App\Http\Controllers\Api\V1\User
+ * @package App\Http\Controllers\User
  */
-abstract class UserController extends V1Controller
+abstract class UserController extends BaseController
 {
     /**
      * User Repository.
@@ -26,8 +26,6 @@ abstract class UserController extends V1Controller
      */
     public function __construct()
     {
-        parent::__construct();
-
         $this->initialize();
     }
 

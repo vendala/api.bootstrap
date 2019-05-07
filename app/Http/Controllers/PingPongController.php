@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers;
 
 use Dingo\Api\Http\Response;
-use App\Http\Controllers\V1Controller;
 
 /**
  * Class PingPongController.
  *
- * @package App\Http\Controllers\Api\V1
+ * @package App\Http\Controllers
  */
-class PingPongController extends V1Controller
+class PingPongController extends BaseController
 {
     /**
      * @return \Dingo\Api\Http\Response

@@ -140,7 +140,7 @@ $app->router->group([
     $api = $app->make(Dingo\Api\Routing\Router::class);
 
     $api->version('v1', function ($api) {
-        $api->group(['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
+        $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
             require __DIR__.'/../routes/api/v1.php';
         });
     });
