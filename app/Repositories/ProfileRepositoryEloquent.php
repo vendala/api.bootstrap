@@ -41,4 +41,13 @@ class ProfileRepositoryEloquent extends BaseRepository implements ProfileReposit
         return ProfileValidator::class;
     }
 
+    /**
+     * @param int $useId
+     *
+     * @return \App\Entities\Profile|\Illuminate\Database\Eloquent\Model
+     */
+    public function createProfileByUserId(int $useId): Profile
+    {
+        return $this->createOrFail(['user_id' => $useId]);
+    }
 }
