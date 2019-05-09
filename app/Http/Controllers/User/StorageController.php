@@ -22,7 +22,7 @@ class StorageController extends UserController
     {
         $attributes = $request->only($this->userRepository->getFillable());
 
-        $user = $this->userRepository->createOrFail($attributes);
+        $user = $this->userRepository->createByFillable($attributes);
 
         return $this->response->item($user, new UserTransformer())->setStatusCode(201);
     }

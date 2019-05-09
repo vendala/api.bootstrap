@@ -70,4 +70,16 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         return $this->model->getFillable();
     }
+
+    /**
+     * @param array $attributes
+     *
+     * @return \App\Entities\User|\Illuminate\Database\Eloquent\Model
+     */
+    public function createByFillable(array $attributes): User
+    {
+        $attributes['password'] = app('hash')->make($attributes['password']);
+
+        return $this->createOrFail($attributes);
+    }
 }
