@@ -141,7 +141,7 @@ $app->router->group([
 
     $api->version('v1', function ($api) {
         $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
-            require __DIR__.'/../routes/api/v1.php';
+            require __DIR__.'/../routes/api.php';
         });
     });
 });
