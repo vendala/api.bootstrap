@@ -93,7 +93,6 @@ $app->register(Illuminate\Notifications\NotificationServiceProvider::class);
 $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(Creativeorange\Gravatar\GravatarServiceProvider::class);
 
-
 /*
 |--------------------------------------------------------------------------
 | Register Configs
@@ -104,6 +103,7 @@ $app->register(Creativeorange\Gravatar\GravatarServiceProvider::class);
 $app->configure('api');
 $app->configure('auth');
 $app->configure('mail');
+$app->configure('gravatar');
 $app->configure('repository');
 $app->configure('filesystems');
 

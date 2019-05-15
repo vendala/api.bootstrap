@@ -20,6 +20,8 @@ class ProfileValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'user_id' => ['require']
         ],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_UPDATE => [
+            'avatar' => ['url']
+        ],
     ];
 }
