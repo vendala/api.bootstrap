@@ -1,7 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: admth
- * Date: 16/03/2019
- * Time: 16:38
- */
+
+
+if (!function_exists('config_path')) {
+    /**
+     * Get the configuration path.
+     *
+     * @param  string $path
+     *
+     * @return string
+     */
+    function config_path(?string $path): string
+    {
+        return app()->basePath() . '/config' . ($path ? '/' . $path : $path);
+    }
+}

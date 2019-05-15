@@ -91,6 +91,7 @@ $app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Illuminate\Notifications\NotificationServiceProvider::class);
 $app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->register(Creativeorange\Gravatar\GravatarServiceProvider::class);
 
 
 /*
