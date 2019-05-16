@@ -16,12 +16,14 @@ class Profile extends Model implements Transformable
 {
     use TransformableTrait;
 
+    protected $primaryKey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'avatar'];
 
     /**
      * Define an inverse one-to-one or many relationship.

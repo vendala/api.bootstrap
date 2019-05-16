@@ -38,6 +38,7 @@ class FindAndSaveGravatarListener
 
     /**
      * @param \App\Events\User\UserSavedEvent $userSavedEvent
+     *
      * @return mixed
      *
      * @throws \Creativeorange\Gravatar\Exceptions\InvalidEmailException
