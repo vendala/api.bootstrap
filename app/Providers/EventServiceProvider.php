@@ -18,8 +18,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         \App\Events\User\UserSavedEvent::class => [
-//            \App\Listeners\User\StorageProfileListener::class,
-//            \App\Listeners\User\FindAndSaveGravatarListener::class,
+            \App\Listeners\User\StorageProfileListener::class,
+            \App\Listeners\User\FindAndSaveGravatarListener::class,
 //            \App\Listeners\User\SendMailVerifyListener::class,
         ]
     ];

@@ -91,7 +91,7 @@ $app->register(Barryvdh\Cors\ServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Illuminate\Notifications\NotificationServiceProvider::class);
 $app->register(Illuminate\Mail\MailServiceProvider::class);
-
+$app->register(Creativeorange\Gravatar\GravatarServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +103,7 @@ $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->configure('api');
 $app->configure('auth');
 $app->configure('mail');
+$app->configure('gravatar');
 $app->configure('repository');
 $app->configure('filesystems');
 
@@ -141,7 +142,7 @@ $app->router->group([
 
     $api->version('v1', function ($api) {
         $api->group(['namespace' => 'App\Http\Controllers'], function ($api) {
-            require __DIR__.'/../routes/api/v1.php';
+            require __DIR__.'/../routes/api.php';
         });
     });
 });

@@ -21,6 +21,7 @@ class StorageProfileListener implements UserListener
 
     /**
      * StorageProfileListener constructor.
+     *
      * @param \App\Repositories\Contracts\ProfileRepository $profileRepository
      */
     public function __construct(ProfileRepository $profileRepository)

@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
+use App\Entities\Profile;
 use App\Supports\Repositories\Contracts\Repository;
 
 /**

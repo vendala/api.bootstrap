@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
+use App\Entities\User;
 use App\Supports\Repositories\Contracts\Repository;
 
 /**
@@ -24,4 +25,11 @@ interface UserRepository extends Repository
      * @return array
      */
     public function getFillable(): array;
+
+    /**
+     * @param array $attributes
+     *
+     * @return \App\Entities\User
+     */
+    public function createByFillable(array $attributes): User;
 }

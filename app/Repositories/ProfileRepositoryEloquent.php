@@ -17,7 +17,7 @@ class ProfileRepositoryEloquent extends BaseRepository implements ProfileReposit
 {
     /**
      * Specify Model class name
-     *
+     * 1
      * @return string
      */
     public function model(): string
@@ -28,7 +28,7 @@ class ProfileRepositoryEloquent extends BaseRepository implements ProfileReposit
     /**
      * Boot up the repository, pushing criteria
      */
-    public function boot()
+    public function boot(): void
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
@@ -40,5 +40,4 @@ class ProfileRepositoryEloquent extends BaseRepository implements ProfileReposit
     {
         return ProfileValidator::class;
     }
-
 }
