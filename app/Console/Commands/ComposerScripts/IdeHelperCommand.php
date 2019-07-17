@@ -43,9 +43,16 @@ class IdeHelperCommand extends Command
         if (app()->environment() === 'local') {
             $artisan = app()->make(\Illuminate\Contracts\Console\Kernel::class);
 
+            echo 'Generate Models' . PHP_EOL;
             $artisan->call('ide-helper:models -RWrn');
+
+            echo 'Generate Eloquent' . PHP_EOL;
             $artisan->call('ide-helper:eloquent');
+
+            echo 'Generate Helper' . PHP_EOL;
             $artisan->call('ide-helper:generate');
+
+            echo 'Generate Meta' . PHP_EOL;
             $artisan->call('ide-helper:meta');
         }
     }
