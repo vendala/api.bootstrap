@@ -40,8 +40,10 @@ class IdeHelperCommand extends Command
      */
     public static function handle(): void
     {
-        if (app()->environment() === 'local') {
-            $artisan = app()->make(\Illuminate\Contracts\Console\Kernel::class);
+        $app = app();
+
+        if ($app->environment() === 'local') {
+            $artisan = $app->make(\Illuminate\Contracts\Console\Kernel::class);
 
             echo 'Generate Models' . PHP_EOL;
             $artisan->call('ide-helper:models -RWrn');

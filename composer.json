@@ -49,9 +49,6 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-autoload-dump": [
-            "App\\Console\\Commands\\ComposerScripts\\IdeHelperCommand::handle"
         ]
     },
     "config": {
